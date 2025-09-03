@@ -1,0 +1,1 @@
+<div class="help-box"><?= h($helptext) ?></div>

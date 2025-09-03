@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -14,8 +15,10 @@ declare(strict_types=1);
  * @since     3.3.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App;
 
+use App\Middleware\RequestTimeMiddleware;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Datasource\FactoryLocator;
@@ -101,7 +104,9 @@ class Application extends BaseApplication
             // https://book.cakephp.org/4/en/security/csrf.html#cross-site-request-forgery-csrf-middleware
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
-            ]));
+            ]))
+
+            ->add(new RequestTimeMiddleware());
 
         return $middlewareQueue;
     }
@@ -113,9 +118,7 @@ class Application extends BaseApplication
      * @return void
      * @link https://book.cakephp.org/4/en/development/dependency-injection.html#dependency-injection
      */
-    public function services(ContainerInterface $container): void
-    {
-    }
+    public function services(ContainerInterface $container): void {}
 
     /**
      * Bootstrapping for CLI application.

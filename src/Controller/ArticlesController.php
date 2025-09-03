@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+
 
 /**
  * Articles Controller
@@ -12,11 +14,7 @@ class ArticlesController extends AppController
 {
     public function index()
     {
-        $query = $this->Articles->find(
-            contain: ['Users']
-        );
-        $articles = $this->paginate($query);
-        $this->set(compact('articles'));
+        $data = ['apple', 'banana', 'cherry'];
     }
 
     public function view($id = null)
