@@ -64,6 +64,8 @@ return function (RouteBuilder $routes): void {
 
         $builder->connect('/ping', ['controller' => 'Ping', 'action' => 'index']);
 
+        $builder->connect('/articles/*', ['controller' => 'Articles', 'action' => 'view']);
+
         /*
          * Connect catchall routes for all controllers.
          *
